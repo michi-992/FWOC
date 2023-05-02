@@ -1,9 +1,6 @@
 <template>
-  <audio :src="`/sounds/${sound}.wav`" controls ref="audioTag" @ended="ended"></audio>
-  <button @click="playSound" :class="{ playing: isPlaying }">
-    {{ sound }}
-  </button>
-
+  <audio :src="`./sounds/${sound}.wav`" :id="sound" controls ref="audioTag" @ended="audioTagEnded"></audio>
+  <button @click="playSound" :class="{ playing: isPlaying}">{{ sound }}</button>
 
 </template>
 
@@ -20,7 +17,7 @@ const playSound = () => {
   audioTag.value.play();
 }
 
-const ended = () => {
+const audioTagEnded = () => {
   // buttonTag.value.classList.remove('playing');
   isPlaying.value = false;
 }
