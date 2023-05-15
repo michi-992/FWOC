@@ -1,12 +1,18 @@
 import { createApp } from "vue/dist/vue.esm-bundler";
 import { createRouter, createWebHashHistory} from "vue-router";
+import "./style.css";
 
 import GamePage from'./pages/Game.vue';
 
 // 1. Define route components.
 // These can be imported from other files
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
+
+// const Home = { template: '<div>Home</div>' }
+// const About = { template: '<div>About</div>' }
+
+import About from "./pages/About.vue";
+import Home from "./pages/Home.vue";
+
 
 // 2. Define some routes
 // Each route should map to a component.
