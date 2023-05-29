@@ -1,5 +1,5 @@
 <template>
-  <h1>All about dogs</h1>
+  <h2>All about dogs</h2>
 
   <DogList :dogs="breeds" />
 </template>

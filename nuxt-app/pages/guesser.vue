@@ -1,40 +1,40 @@
 <template>
 
-  <h1>Guesser Game</h1>
+  <h2>Guesser Game</h2>
 
-  <div id="gameField">
-    <div id="scoreAndDeck">
+  <div class="w-10/12 m-auto flex-col text-center">
+    <div class="grid grid-cols-2 text-center">
       <div>
-      <h2>Current Score: {{ score }}</h2>
-      <button @click="resetScore" class="genericButton">Reset Score</button>
+        <h3>Current Score: {{ score }}</h3>
+        <button @click="resetScore">Reset Score</button>
       </div>
+
       <div>
-      <h2>Remaining Cards: {{ remainingNrCards }}</h2>
-      <button @click="getNewDeck" class="genericButton">New Deck</button>
+        <h3>Remaining Cards: {{ remainingNrCards }}</h3>
+        <button @click="getNewDeck">New Deck</button>
       </div>
     </div>
 
-    <h2>Current Guess: {{ guess }}</h2>
 
     <div>
-      <button @click="() => (guess = 'red')" class="inputButton">Guess Red</button>
-      <button @click="() => (guess = 'black')" class="inputButton">Guess Black</button>
+      <h3>Current Guess: {{ guess }}</h3>
+
+      <div>
+        <button @click="() => (guess = 'red')">Guess Red</button>
+        <button @click="() => (guess = 'black')">Guess Black</button>
+      </div>
+
+      <button @click="drawCard" :disabled="guess === undefined || remainingNrCards <= 0">Draw Card</button>
+      <div v-if="card">
+        <img :src="card.image" class="m-auto">
+      </div>
     </div>
-    <button @click="drawCard" :disabled="guess === undefined || remainingNrCards <= 0" class="genericButton">Draw Card
-    </button>
-    <div v-if="card" class="card">
-      <Card :image="card.image"></Card>
-    </div>
-    <div v-else class="card">
-      <Card></Card>
-    </div>
+
+
   </div>
 
 </template>
 <script setup>
-
-import {ref, onMounted} from 'vue'
-import Card from "../components/Card.vue";
 
 const deckId = ref();
 const remainingNrCards = ref();

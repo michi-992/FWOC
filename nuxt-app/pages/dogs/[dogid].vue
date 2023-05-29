@@ -1,5 +1,5 @@
 <template>
-  <h1>Dog Details</h1>
+  <h2>Dog Details</h2>
 
   <NuxtLink to="/dogs">Go back</NuxtLink>
 
@@ -18,13 +18,12 @@
       Loading...
     </div>
     <div v-else>
-      <h1>{{ da.name }}</h1>
+      <h3>{{ da.name }}</h3>
       <p>{{ da.description }}</p>
     </div>
   </template>
 
 <script setup>
-// version 2
 const route = useRoute();
 
 const dogAPI = `https://dogapi.dog/api/v2/breeds/${route.params.dogid}`;
@@ -34,25 +33,4 @@ const { pending, data: details } = useFetch(dogAPI);
 const da = computed(() => {
   if (details.value) return details.value.data.attributes;
 });
-
-//Version 1
-// const route = useRoute();
-// const loading = ref(true);
-//
-// const dogAPI = `https://dogapi.dog/api/v2/breeds/${route.params.dogid}`;
-//
-// const dog = ref();
-//
-// const da = computed(() => {
-//   if (dog.value) return dog.value.attributes;
-// });
-//
-// onMounted(async () => {
-//   const {data} = await fetch(dogAPI).then((r) => r.json());
-//   dog.value = data;
-//   setTimeout(() => {
-//     loading.value = false;
-//   }, 1000)
-// });
-
 </script>

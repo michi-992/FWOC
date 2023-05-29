@@ -2,14 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
-    @apply text-blue-500 underline hover:text-blue-700;
+body {
+    @apply bg-lime-100 text-green-950 m-3;
 }
 
-/*a:hover {*/
-/*    @apply text-blue-700;*/
+/*a {*/
+/*    @apply text-teal-700 underline hover:text-teal-800;*/
 /*}*/
 
 nav > a {
-    @apply p-4;
+    @apply p-4 text-lime-100 underline hover:text-lime-200;
+}
+
+a {
+    @apply underline hover:text-green-800;
+}
+
+nav {
+    @apply bg-green-900 rounded-xl p-2;
+}
+
+h1 {
+    @apply font-bold text-xl m-2;
+}
+
+button {
+    @apply bg-green-900 m-1 rounded-xl p-1.5 text-lime-100;
+}
+
+h2 {
+    @apply font-bold text-lg m-2 italic;
+}
+
+h3 {
+    @apply font-semibold text-xl p-1;
 }
