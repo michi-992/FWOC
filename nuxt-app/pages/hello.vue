@@ -1,3 +1,5 @@
 <template>
-  <h2>Hello World and Vue</h2>
+  <main>
+    <h2>Hello World and Vue</h2>
+  </main>
 </template>

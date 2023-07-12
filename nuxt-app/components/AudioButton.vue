@@ -1,8 +1,12 @@
 <template>
-  <div class="flex flex-row gap-3 place-content-center">
-    <audio :src="`./sounds/${sound}.wav`" :id="sound" controls ref="audioTag" @ended="audioTagEnded"></audio>
-    <button @click="playSound" :class="{ playing: isPlaying}">{{ sound }}</button>
-  </div>
+  <tr>
+    <th>
+      <audio :src="`./sounds/${sound}.wav`" :id="sound" controls ref="audioTag" @ended="audioTagEnded"></audio>
+    </th>
+    <th>
+      <button @click="playSound" :class="{'bg-teal-100 text-teal-700': isPlaying, 'playing': isPlaying}" class="soundboard-btn">{{ sound }}</button>
+    </th>
+  </tr>
 </template>
 
 <script setup>
@@ -20,5 +24,4 @@ const playSound = () => {
 const audioTagEnded = () => {
   isPlaying.value = false;
 }
-
 </script>

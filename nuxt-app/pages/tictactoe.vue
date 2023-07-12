@@ -1,28 +1,35 @@
 <template>
-  <div>
+  <main>
     <h2>TicTacToe Game</h2>
-    <div class="grid grid-cols-3">
-      <div v-for="(cell, index) in store.game
-     .board" :key="index">
-        <button @click="store.game.setCell(index)" :disabled="cell !== 0 || store.game.winner"
-            class="bg-gray-200 text-gray-800 font-bold py-4 px-6 rounded">
-          {{ cell === 1 ? 'O' : cell === 2 ? 'X' : '-' }}
-        </button>
+    <div class="game">
+      <div>
+        <h3>Current score: {{ store.game.score }} / {{ store.game.rounds }}</h3>
+
+        <div v-if="store.game.winner !== null">
+          <div v-if="store.game.winner === 3">
+            <h3>It's a draw!</h3>
+          </div>
+          <div v-else>
+            <h3>{{ store.game.winner === 1 ? 'You win' : 'The bot wins' }}!</h3>
+          </div>
+          <button @click="store.game.reset">Restart</button>
+        </div>
+      </div>
+
+      <div class="tictactoeGrid">
+        <div v-for="(cell, index) in store.game.board" :key="index">
+          <button @click="store.game.setCell(index)" :disabled="cell !== 0 || store.game.winner || store.game.botTurn"
+                  class="tictactoeCell">
+            {{ cell === 1 ? 'O' : cell === 2 ? 'X' : ' ' }}
+          </button>
+        </div>
       </div>
     </div>
-    <div v-if="store.game.winner !== null">
-      <div v-if="store.game.winner === -1">
-        <p>It's a draw!</p>
-      </div>
-      <div v-else>
-        <p>{{ store.game.winner === 1 ? 'You win' : 'The bot wins' }}!</p>
-      </div>
-      <button @click="store.game.reset">Restart</button>
-    </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
 import {useTicTacToeStore} from "~/stores/useTicTacToeStore";
+
 const store = useTicTacToeStore();
 </script>

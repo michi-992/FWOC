@@ -6,6 +6,7 @@ export const useGuesserStore = defineStore('guesser', () => {
     const card = ref();
     const guess = ref();
     const score = ref(0);
+    const rounds = ref(0);
 
     onMounted(async () => {
         console.log('mounted');
@@ -18,7 +19,6 @@ export const useGuesserStore = defineStore('guesser', () => {
         if (data.success) {
             deckId.value = data.deck_id;
             remainingNrCards.value = data.remaining;
-            console.log(data);
         }
     }
 
@@ -37,7 +37,7 @@ export const useGuesserStore = defineStore('guesser', () => {
         if (data.success) {
             card.value = data.cards[0];
             remainingNrCards.value--;
-            console.log(data);
+            rounds.value++;
             evaluateGuess();
         }
     }
@@ -54,6 +54,7 @@ export const useGuesserStore = defineStore('guesser', () => {
 
     function resetScore() {
         score.value = 0;
+        rounds.value = 0;
     }
 
 
@@ -63,6 +64,7 @@ export const useGuesserStore = defineStore('guesser', () => {
         guess,
         card,
         remainingNrCards,
+        rounds,
         drawCard,
         setGuess,
         getNewDeck,

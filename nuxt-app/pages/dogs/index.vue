@@ -1,7 +1,9 @@
 <template>
-  <h2>All about dogs</h2>
+  <main>
+    <h2>All about dogs</h2>
 
-  <DogList :dogs="breeds" />
+    <DogList :dogs="breeds" />
+  </main>
 </template>
 
 <script setup>
@@ -15,7 +17,6 @@ const breeds = computed(() => {
 
     return [];
 })
-
 
 // v1
 // const breeds = ref([]);
