@@ -48,7 +48,7 @@ export const useTicTacToeStore = defineStore('ticTacToe', () => {
         return null;
     });
 
-    const setCell = (index) => {
+    function setCell (index) {
         if (board.value[index] === 0 && !winner.value && !botTurn.value) {
             board.value[index] = playerSign.value === 'O' ? 1 : 2;
             playerSign.value = playerSign.value === 'O' ? 'X' : 'O';
@@ -58,15 +58,20 @@ export const useTicTacToeStore = defineStore('ticTacToe', () => {
             playerSign.value = playerSign.value === 'O' ? 'X' : 'O';
         }
         game.index = index;
-    };
+    }
 
-    const reset = () => {
+    function resetBoard () {
         board.value = [0, 0, 0, 0, 0, 0, 0, 0, 0];
         playerSign.value = 'O';
-    };
+    }
+
+    function resetScore() {
+        score.value = 0;
+        rounds.value = 0;
+    }
 
     // bot
-    const makeBotMove = () => {
+    function makeBotMove() {
         setTimeout(() => {
             if (playerSign.value === 'X' && !winner.value) {
                 const indexes = board.value
@@ -78,7 +83,7 @@ export const useTicTacToeStore = defineStore('ticTacToe', () => {
             }
             botTurn.value = false;
         }, 700);
-    };
+    }
 
     watch(
         () => playerSign.value,
@@ -104,7 +109,8 @@ export const useTicTacToeStore = defineStore('ticTacToe', () => {
         rounds,
         winner,
         setCell,
-        reset,
+        resetBoard,
+        resetScore
     }
 
     return {

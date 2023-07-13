@@ -52,7 +52,7 @@ table {
 }
 
 .dogList > li {
-    @apply h-full w-full h-20 bg-teal-500 rounded-xl text-center hover:bg-teal-700;
+    @apply h-full w-full h-20 bg-teal-500 rounded-xl text-center hover:bg-teal-700 pt-3;
 }
 
 .dogList a {
@@ -81,11 +81,11 @@ p {
 }
 
 .tictactoeCell {
-    @apply h-16 w-16 bg-gray-800 text-teal-300 font-bold p-4 rounded;
+    @apply h-20 w-20 bg-gray-800 text-teal-300 text-xl font-bold rounded;
 }
 
 .tictactoeGrid {
-    @apply grid grid-cols-3 justify-stretch
+    @apply grid grid-cols-3 gap-2;
 }
 
 

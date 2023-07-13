@@ -3,7 +3,11 @@
     <h2>TicTacToe Game</h2>
     <div class="game">
       <div>
-        <h3>Current score: {{ store.game.score }} / {{ store.game.rounds }}</h3>
+        <div class="gameStat">
+          <h3>Current score: {{ store.game.score }} / {{ store.game.rounds }}</h3>
+          <button @click="store.game.resetScore">Reset Score</button>
+        </div>
+
 
         <div v-if="store.game.winner !== null">
           <div v-if="store.game.winner === 3">
@@ -12,7 +16,7 @@
           <div v-else>
             <h3>{{ store.game.winner === 1 ? 'You win' : 'The bot wins' }}!</h3>
           </div>
-          <button @click="store.game.reset">Restart</button>
+          <button @click="store.game.resetBoard">Restart</button>
         </div>
       </div>
 
